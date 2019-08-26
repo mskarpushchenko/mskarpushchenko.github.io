@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon" sizes="167x167" href="img/favicons/apple-touch-icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
     <link rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png">
-    <link rel="stylesheet" href="styles/main.min.css">
+    <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
     <header>
@@ -99,12 +99,13 @@
               <nav class="navbar">
                 <form class="form-inline">
                   <div class="search_field">
-                    <input class="form-control" type="text" placeholder="Введите ваш запрос" aria-label="Search">
+                    <input class="form-control search_input" type="text" placeholder="Введите ваш запрос" aria-label="Search">
                     <button class="search_submit" type="submit"><img src="img/filter.png" alt="Filter"></button>
                   </div>
                   <div class="select"> 
                     <label class="select_sup_label" for="state">Макрорегион        </label>
-                    <select class="js-example-basic-single" name="state" id="state">
+                    <select class="js-example-basic-single select_state" name="state" id="state">
+                      <option value="">Выберите регион</option>
                       <option value="moscow">Москва</option>
                       <option value="north">Север</option>
                       <option value="ural">Урал</option>
@@ -115,37 +116,25 @@
                   </div>
                   <div class="select">
                     <label class="select_sup_label" for="units">Подразделение          </label>
-                    <select class="js-example-basic-single" name="units" id="units">
+                    <select class="js-example-basic-single select_units" name="units" id="units">
+                      <option value="">Выберите клиентский центр</option>
                       <option value="197375">Клиентский центр №197375</option>
-                      <option value="197375">Клиентский центр №197376</option>
-                      <option value="197375">Клиентский центр №197377</option>
-                      <option value="197375">Клиентский центр №197378</option>
-                      <option value="197375">Клиентский центр №197379</option>
-                      <option value="197375">Клиентский центр №197380</option>
-                      <option value="197375">Клиентский центр №197375</option>
-                      <option value="197375">Клиентский центр №197376</option>
-                      <option value="197375">Клиентский центр №197377</option>
-                      <option value="197375">Клиентский центр №197378</option>
-                      <option value="197375">Клиентский центр №197379</option>
-                      <option value="197375">Клиентский центр №197380</option>
-                      <option value="197375">Клиентский центр №197380</option>
-                      <option value="197375">Клиентский центр №197375</option>
-                      <option value="197375">Клиентский центр №197376</option>
-                      <option value="197375">Клиентский центр №197377</option>
-                      <option value="197375">Клиентский центр №197378</option>
-                      <option value="197375">Клиентский центр №197379</option>
-                      <option value="197375">Клиентский центр №197380</option>
+                      <option value="197376">Клиентский центр №197376</option>
+                      <option value="197377">Клиентский центр №197377</option>
+                      <option value="197378">Клиентский центр №197378</option>
+                      <option value="197379">Клиентский центр №197379</option>
+                      <option value="197380">Клиентский центр №197380</option>
                     </select>
                   </div>
                   <div class="select">
                     <label class="select_sup_label" for="position">Должность      </label>
-                    <select class="js-example-basic-single" name="position" id="position">
-                      <option value="sap">САП</option>
-                      <option value="sap">САП1</option>
-                      <option value="sap">САП2</option>
-                      <option value="sap">САП3</option>
-                      <option value="sap">САП4</option>
-                      <option value="sap">САП5</option>
+                    <select class="js-example-basic-single select_position" name="position" id="position">
+                      <option value="">Выберите должность</option>
+                      <option value="САП1">САП1</option>
+                      <option value="САП2">САП2</option>
+                      <option value="САП3">САП3</option>
+                      <option value="САП4">САП4</option>
+                      <option value="САП5">САП5</option>
                     </select>
                   </div>
                 </form>
@@ -155,7 +144,7 @@
               <div></div>
             </div>
             <div class="table table1">  
-              <table class="table-hover">
+              <table class="table-hover" id="table1">
                 <thead>
                   <tr>
                     <th scope="col">ФИО</th>
@@ -168,110 +157,110 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>           
+                  <tr data-region="moscow">         
                     <td>Иванова Анна Сергеевна</td>
                     <td>123456</td>
-                    <td>САП</td>
+                    <td>САП5</td>
                     <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
                   </tr>
-                  <tr>           
+                  <tr data-region="ural">          
                     <td>Александрова Александра Александровна</td>
                     <td>456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП1</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197376</a></td>
                     <td>14.11.2017</td>
                     <td>2</td>
                     <td>активен</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="north">
+                    <td>Иванова Анна Сергеевна 22</td>
                     <td>1234</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП2</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197377</a></td>
                     <td>16.02.2018</td>
                     <td>5</td>
                     <td>больничный</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="moscow">     
+                    <td>Иванова Анна Сергеевна 33</td>
                     <td>123456</td>
-                    <td>САП</td>
+                    <td>САП3</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197378</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="moscow">           
+                    <td>Иванова Анна Сергеевна 4345</td>
+                    <td>123456</td>
+                    <td>САП4</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197379</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="sibir">
+                    <td>Иванова Анна Сергеевна 67553</td>
+                    <td>123456</td>
+                    <td>САП5</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197380</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="sibir">         
+                    <td>Иванова Анна Сергеевна 25342</td>
+                    <td>123456</td>
+                    <td>САП2</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197377</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="sibir">          
+                    <td>Иванова Анна Сергеевна 76787445</td>
+                    <td>123456</td>
+                    <td>САП1</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197379</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="povolzhie_north">           
+                    <td>Иванова Анна Сергеевна 031230</td>
+                    <td>123456</td>
+                    <td>САП2</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197377</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="povolzhie_south">           
+                    <td>Иванова Анна Сергеевна ULTRA</td>
+                    <td>123456</td>
+                    <td>САП3</td>
                     <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="povolzhie_south">           
+                    <td>Иванова Анна Сергеевна 2232</td>
                     <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП4</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197374</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="sibir">           
+                    <td>Иванова Анна Сергеевна 88323</td>
                     <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП5</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197380</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
@@ -285,12 +274,13 @@
               <nav class="navbar">
                 <form class="form-inline">
                   <div class="search_field">
-                    <input class="form-control" type="text" placeholder="Введите ваш запрос" aria-label="Search">
+                    <input class="form-control search_input" type="text" placeholder="Введите ваш запрос" aria-label="Search">
                     <button class="search_submit" type="submit"><img src="img/filter.png" alt="Filter"></button>
                   </div>
                   <div class="select"> 
                     <label class="select_sup_label" for="state2">Макрорегион        </label>
-                    <select class="js-example-basic-single" name="state" id="state2">
+                    <select class="js-example-basic-single select_state" name="state" id="state2">
+                      <option value="">Выберите регион</option>
                       <option value="moscow">Москва</option>
                       <option value="north">Север</option>
                       <option value="ural">Урал</option>
@@ -301,24 +291,25 @@
                   </div>
                   <div class="select">
                     <label class="select_sup_label" for="units2">Подразделение          </label>
-                    <select class="js-example-basic-single" name="units" id="units2">
+                    <select class="js-example-basic-single select_units" name="units" id="units2">
+                      <option value="">Выберите клиентский центр</option>
                       <option value="197375">Клиентский центр №197375</option>
-                      <option value="197375">Клиентский центр №197376</option>
-                      <option value="197375">Клиентский центр №197377</option>
-                      <option value="197375">Клиентский центр №197378</option>
-                      <option value="197375">Клиентский центр №197379</option>
-                      <option value="197375">Клиентский центр №197380</option>
+                      <option value="197376">Клиентский центр №197376</option>
+                      <option value="197377">Клиентский центр №197377</option>
+                      <option value="197378">Клиентский центр №197378</option>
+                      <option value="197379">Клиентский центр №197379</option>
+                      <option value="197380">Клиентский центр №197380</option>
                     </select>
                   </div>
                   <div class="select">
                     <label class="select_sup_label" for="position2">Должность      </label>
-                    <select class="js-example-basic-single" name="position" id="position2">
-                      <option value="sap">САП</option>
-                      <option value="sap">САП1</option>
-                      <option value="sap">САП2</option>
-                      <option value="sap">САП3</option>
-                      <option value="sap">САП4</option>
-                      <option value="sap">САП5</option>
+                    <select class="js-example-basic-single select_position" name="position" id="position2">
+                      <option value="">Выберите должность</option>
+                      <option value="САП1">САП1</option>
+                      <option value="САП2">САП2</option>
+                      <option value="САП3">САП3</option>
+                      <option value="САП4">САП4</option>
+                      <option value="САП5">САП5</option>
                     </select>
                   </div>
                 </form>
@@ -341,110 +332,110 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>           
+                  <tr data-region="moscow">         
                     <td>Иванова Анна Сергеевна</td>
                     <td>123456</td>
-                    <td>САП</td>
+                    <td>САП5</td>
                     <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
                   </tr>
-                  <tr>           
+                  <tr data-region="ural">          
                     <td>Александрова Александра Александровна</td>
                     <td>456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП1</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197376</a></td>
                     <td>14.11.2017</td>
                     <td>2</td>
                     <td>активен</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="north">
+                    <td>Иванова Анна Сергеевна 22</td>
                     <td>1234</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП2</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197377</a></td>
                     <td>16.02.2018</td>
                     <td>5</td>
                     <td>больничный</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="moscow">     
+                    <td>Иванова Анна Сергеевна 33</td>
                     <td>123456</td>
-                    <td>САП</td>
+                    <td>САП3</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197378</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="moscow">           
+                    <td>Иванова Анна Сергеевна 4345</td>
+                    <td>123456</td>
+                    <td>САП4</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197379</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="sibir">
+                    <td>Иванова Анна Сергеевна 67553</td>
+                    <td>123456</td>
+                    <td>САП5</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197380</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="sibir">         
+                    <td>Иванова Анна Сергеевна 25342</td>
+                    <td>123456</td>
+                    <td>САП2</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197377</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="sibir">          
+                    <td>Иванова Анна Сергеевна 76787445</td>
+                    <td>123456</td>
+                    <td>САП1</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197379</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="povolzhie_north">           
+                    <td>Иванова Анна Сергеевна 031230</td>
+                    <td>123456</td>
+                    <td>САП2</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197377</a></td>
+                    <td>14.02.2018</td>
+                    <td>Необходимо создать график</td>
+                    <td>отпуск</td>
+                  </tr>
+                  <tr data-region="povolzhie_south">           
+                    <td>Иванова Анна Сергеевна ULTRA</td>
+                    <td>123456</td>
+                    <td>САП3</td>
                     <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="povolzhie_south">           
+                    <td>Иванова Анна Сергеевна 2232</td>
                     <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП4</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197374</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
                   </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
+                  <tr data-region="sibir">           
+                    <td>Иванова Анна Сергеевна 88323</td>
                     <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
-                    <td>14.02.2018</td>
-                    <td>Необходимо создать график</td>
-                    <td>отпуск</td>
-                  </tr>
-                  <tr>           
-                    <td>Иванова Анна Сергеевна</td>
-                    <td>123456</td>
-                    <td>САП</td>
-                    <td> <a class="table_units_a" href="#">Клиентский центр №197375</a></td>
+                    <td>САП5</td>
+                    <td> <a class="table_units_a" href="#">Клиентский центр №197380</a></td>
                     <td>14.02.2018</td>
                     <td>Необходимо создать график</td>
                     <td>отпуск</td>
@@ -461,7 +452,7 @@
         <div class="row"><a class="footer_nav_a" href="#">Корпоративный портал</a><a class="footer_nav_a" href="#">База знаний</a><a class="footer_nav_a" href="#">Сайт Банка</a></div>
       </div>
     </footer>
-    <script src="js/main.min.js"></script>
-    <script src="js/vendor.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/vendor.js"></script>
   </body>
 </html>
